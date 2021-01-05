@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <!-- <Lesson1/> -->
+    <!-- <Lesson2/> -->
+    <Lesson3/>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import Lesson1 from './components/Lesson1.vue'
+// import Lesson2 from './components/Lesson2.vue'
+import Lesson3 from './components/Lesson3.vue'
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // Lesson1,
+    // Lesson2,
+    Lesson3
   }
 }
 </script>
