@@ -4,8 +4,9 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
     <!-- <Lesson1/> -->
     <!-- <Lesson2/> -->
-    <Lesson3/>
-
+    <!-- <Lesson3/> -->
+    <Cart/>
+<!--    <Cart2/>-->
   </div>
 </template>
 
@@ -13,15 +14,20 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import Lesson1 from './components/Lesson1.vue'
 // import Lesson2 from './components/Lesson2.vue'
-import Lesson3 from './components/Lesson3.vue'
+// import Lesson3 from './components/Lesson3.vue'
+
+import Cart from './components/Buoi2/Cart.vue'
+// import Cart2 from "@/components/Buoi2/Cart2";
 
 
 export default {
   name: 'App',
   components: {
+    Cart,
     // Lesson1,
     // Lesson2,
-    Lesson3
+    // Lesson3
+    // Cart
   }
 }
 </script>
