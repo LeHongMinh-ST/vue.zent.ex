@@ -1,44 +1,33 @@
 <template>
   <div id="app">
-    <!-- <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-    <!-- <Lesson1/> -->
-    <!-- <Lesson2/> -->
-    <!-- <Lesson3/> -->
-    <Cart/>
-<!--    <Cart2/>-->
+    <Todo/>
   </div>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-// import Lesson1 from './components/Lesson1.vue'
-// import Lesson2 from './components/Lesson2.vue'
-// import Lesson3 from './components/Lesson3.vue'
-
-import Cart from './components/Buoi2/Cart.vue'
-// import Cart2 from "@/components/Buoi2/Cart2";
-
+import Todo from "@/components/Buoi3/Bai3.1/Todo.vue";
 
 export default {
   name: 'App',
   components: {
-    Cart,
-    // Lesson1,
-    // Lesson2,
-    // Lesson3
-    // Cart
+    Todo
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+body {
+  background-color: #0080dd;
+
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
+
 }
+
 </style>
