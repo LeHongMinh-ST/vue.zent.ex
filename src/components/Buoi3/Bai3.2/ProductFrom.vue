@@ -68,7 +68,6 @@ export default {
         validate = false
       }
 
-      console.log(validate)
       if(validate){
         let data = {
           id: this.id,

@@ -22,10 +22,10 @@
           <span v-else style="color: #f18083">Hết hàng</span>
         </td>
         <td>
-          <input type="button" class="btnEdit" :disabled="pagination.page == 1" @click="editProduct(product.id)"
+          <input type="button" class="btnEdit" @click="editProduct(product.id)"
                  value="Sửa">
           <input type="button" class="btnDelete"
-                 :disabled="pagination.page == Math.ceil(products.length / pagination.limit)"
+
                  @click="deleteProduct(product.id)" value="Xóa">
         </td>
       </tr>
@@ -34,8 +34,10 @@
     <div class="pagination">
       <div class="textPagonation"><p>{{ textPagonation }}</p></div>
       <div class="btnPagination">
-        <input class="prevPagination" type="button" @click="changePage(-1)" value="<">
-        <input class="nextPagination" type="button" @click="changePage(+1)" value=">">
+        <input class="prevPagination" type="button" :disabled="pagination.page == 1" @click="changePage(-1)" value="<">
+        <input class="nextPagination" type="button"
+               :disabled="pagination.page == Math.ceil(products.length / pagination.limit)" @click="changePage(+1)"
+               value=">">
       </div>
     </div>
   </div>
@@ -76,7 +78,7 @@ export default {
       let limit = this.pagination.limit;
       let page = this.pagination.page;
       let totalPage = Math.ceil(this.products.length / limit);
-      let start =this.products.length > 0 ? limit * (page - 1) + 1 : 0;
+      let start = this.products.length > 0 ? limit * (page - 1) + 1 : 0;
       let end = page === totalPage ? this.products.length : start + limit - 1;
       return 'Hiển thị ' + start + '-' + end + ' trên tổng ' + this.products.length + ' (' + totalPage + ' trang)';
     }

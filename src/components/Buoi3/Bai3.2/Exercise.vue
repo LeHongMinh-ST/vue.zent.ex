@@ -71,6 +71,7 @@ export default {
     },
     editProcess(data) {
       this.btnCreate = "Cập nhập";
+      console.log(data)
       this.product = this.products.find((product) => {
         return product.id == data;
       });
