@@ -28,6 +28,9 @@
                  @click="deleteProduct(product.id)" value="Xóa">
         </td>
       </tr>
+      <tr v-if="products.length == 0">
+          <td colspan="6"> Không có dữ liệu</td>
+      </tr>
       </tbody>
     </table>
     <div class="pagination">
