@@ -114,7 +114,7 @@ export default {
     tbody {
       tr {
         .productName{
-          color: #5591e0;;
+          color: #5591e0;
         }
         td {
 
