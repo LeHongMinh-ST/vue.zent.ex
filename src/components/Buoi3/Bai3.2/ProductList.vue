@@ -14,7 +14,7 @@
       <tbody>
       <tr v-for="(product) in list" :key="product.id">
         <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
+        <td class="productName">{{ product.name }}</td>
         <td>{{ Number(product.price).toLocaleString("vi-VN") }} đ</td>
         <td>{{ product.quantity }}</td>
         <td>
@@ -113,7 +113,11 @@ export default {
 
     tbody {
       tr {
+        .productName{
+          color: #5591e0;;
+        }
         td {
+
           border-left: 1px solid #ddd;
           padding: 20px;
 
