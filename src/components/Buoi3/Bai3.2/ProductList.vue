@@ -29,7 +29,7 @@
         </td>
       </tr>
       <tr v-if="products.length == 0">
-          <td colspan="6"> Không có dữ liệu</td>
+        <td colspan="6"> Không có dữ liệu</td>
       </tr>
       </tbody>
     </table>
@@ -38,7 +38,8 @@
       <div class="btnPagination">
         <input class="prevPagination" type="button" :disabled="pagination.page == 1" @click="changePage(-1)" value="<">
         <input class="nextPagination" type="button"
-               :disabled="pagination.page == Math.ceil(products.length / pagination.limit)" @click="changePage(+1)"
+               :disabled="pagination.page == Math.ceil(products.length / pagination.limit) || products.length == 0"
+               @click="changePage(+1)"
                value=">">
       </div>
     </div>
