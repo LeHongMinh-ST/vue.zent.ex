@@ -114,6 +114,7 @@ export default {
     tbody {
       tr {
         .productName{
+          text-align: left;
           color: #5591e0;
         }
         td {
