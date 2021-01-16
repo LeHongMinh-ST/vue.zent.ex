@@ -25,7 +25,6 @@
           <input type="button" class="btnEdit" @click="editProduct(product.id)"
                  value="Sửa">
           <input type="button" class="btnDelete"
-
                  @click="deleteProduct(product.id)" value="Xóa">
         </td>
       </tr>
@@ -79,7 +78,7 @@ export default {
       let page = this.pagination.page;
       let totalPage = Math.ceil(this.products.length / limit);
       let start = this.products.length > 0 ? limit * (page - 1) + 1 : 0;
-      let end = page === totalPage ? this.products.length : start + limit - 1;
+      let end = page == totalPage || totalPage == 0 ? this.products.length : start + limit - 1;
       return 'Hiển thị ' + start + '-' + end + ' trên tổng ' + this.products.length + ' (' + totalPage + ' trang)';
     }
   }
