@@ -1,26 +1,27 @@
 <template>
- <div>
-   <div class="todoDetail" v-for="(todo,index) in todos" :key="index">
-     <div class="todoCheck">
-       <input type="checkbox" @click="todo.status = !todo.status" :checked="todo.status">
-     </div>
-     <div class="todoText" :class="{todoSuccess : todo.status}">
-       {{todo.name}}
-     </div>
-     <div class="deleteTodo" v-if="todo.status">
-       <input type="button" value="Xóa" @click="deleteTodo(index)">
-     </div>
-   </div>
- </div>
+  <div class="todoDetail">
+    <div class="todoCheck">
+      <input type="checkbox" @click="changStatus(index)" :checked="status">
+    </div>
+    <div class="todoText" :class="{todoSuccess : status}">
+      {{ name }}
+    </div>
+    <div class="deleteTodo" v-if="status">
+      <input type="button" value="Xóa" @click="deleteTodo(index)">
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-  props:['todos'],
+  props: ['name', 'status', 'index'],
   name: "TodoItem",
-  methods:{
-    deleteTodo(index){
-      this.$emit('deleteTodo',index);
+  methods: {
+    deleteTodo(index) {
+      this.$emit('deleteTodo', index);
+    },
+    changStatus(index) {
+      this.$emit('statusEvent', index)
     }
   }
 }
@@ -44,7 +45,7 @@ export default {
     text-align: left;
   }
 
-  .todoSuccess{
+  .todoSuccess {
     text-decoration-line: line-through;
   }
 

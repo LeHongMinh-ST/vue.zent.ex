@@ -13,8 +13,9 @@
 
       <div class="bodyTodosWrap">
         <div class="listTodo">
-          <TodoItem v-if="todos.length > 0" :todos="todos" @deleteTodo="deleteEvent"/>
-          <div v-else class="todoNone">
+          <TodoItem v-for="(todo,index) in todos" :key="index" :name="todo.name" :index="index" :status="todo.status"
+                    @deleteTodo="deleteEvent" @statusEvent="statusEvent"/>
+          <div v-if="todos.length == 0" class="todoNone">
             Chưa có task nào được thêm
           </div>
         </div>
@@ -34,6 +35,7 @@ export default {
   data() {
     return {
       todos: [],
+      value: "",
     }
   },
   methods: {
@@ -49,6 +51,9 @@ export default {
       this.todos = this.todos.filter((todo, index) => {
         return index != data;
       })
+    },
+    statusEvent(data){
+      this.todos[data].status = !this.todos[data].status
     }
   }
 }
@@ -59,6 +64,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #0080dd;
+  margin: 0;
+  height: 1000px;
 
   .todosWrap {
     width: 600px;
@@ -67,7 +75,7 @@ export default {
     border-radius: 10px;
 
     .headerTodosWrap {
-      margin-bottom: 30px;
+      margin: 30px 0;
 
       .headerTodosText {
         .todosText {
@@ -87,7 +95,8 @@ export default {
           outline: none;
           border-radius: 5px;
         }
-        input:focus{
+
+        input:focus {
           border: 1px solid #4e99e4;
         }
       }
@@ -97,16 +106,16 @@ export default {
       height: 80%;
 
       .listTodo {
-        overflow-y: scroll;
+        overflow-y: auto;
         height: 95%;
         width: 95%;
         position: relative;
 
-        .todoNone{
+        .todoNone {
           color: #ec577a;
           position: absolute;
-          top:40%;
-          left: 30%;
+          top: 40%;
+          left: 35%;
         }
       }
     }

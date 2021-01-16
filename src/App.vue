@@ -1,23 +1,26 @@
 <template>
   <div id="app">
-    <Todo/>
+<!--    <Todo/>-->
+    <Exercise/>
   </div>
 </template>
 
 <script>
-import Todo from "@/components/Buoi3/Bai3.1/Todo.vue";
+// import Todo from "@/components/Buoi3/Bai3.1/Todo.vue"
+import Exercise from "@/components/Buoi3/Bai3.2/Exercise";
 
 export default {
   name: 'App',
   components: {
-    Todo
+    // Todo
+    Exercise
   }
 }
 </script>
 
 <style lang="scss">
 body {
-  background-color: #0080dd;
+  margin: 0;
 
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -26,6 +29,7 @@ body {
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    margin: 0;
   }
 
 }
