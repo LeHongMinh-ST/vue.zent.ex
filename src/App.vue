@@ -1,37 +1,46 @@
 <template>
   <div id="app">
-<!--    <Todo/>-->
-    <Exercise/>
+    <!--    <Todo/>-->
+    <!--    <Exercise/>-->
+    <News/>
+<!--    <Admin/>-->
   </div>
 </template>
 
 <script>
-// import Todo from "@/components/Buoi3/Bai3.1/Todo.vue"
-import Exercise from "@/components/Buoi3/Bai3.2/Exercise";
 
+// import Admin from "@/components/Buoi4/Bai4.1/Admin";
+import News from "@/components/Buoi4/Bai4.2/News";
 export default {
   name: 'App',
   components: {
-    // Todo
-    Exercise
+    News
+    // Admin
   }
 }
 </script>
 
 <style lang="scss">
-body {
-  margin: 0;
-
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+html{
+  height: 100%;
+  body {
     margin: 0;
-  }
+    height: 100%;
 
+    #app {
+      font-family: Avenir, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-align: center;
+      color: #2c3e50;
+      margin-top: 60px;
+      margin: 0;
+
+      height: 100%;
+    }
+
+  }
 }
+
 
 </style>
