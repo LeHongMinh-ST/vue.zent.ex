@@ -3,7 +3,9 @@
     <el-header>
       <slot name="banner"></slot>
       <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">Trang chủ</el-menu-item>
+        <el-menu-item index="1">
+          <router-link to="/">Trang chủ</router-link>
+        </el-menu-item>
         <el-submenu index="2">
           <template slot="title">Thể thao</template>
           <el-menu-item index="2-1">Bóng đá châu âu</el-menu-item>
@@ -19,9 +21,13 @@
         </el-submenu>
         <el-menu-item index="4">Pháp luật</el-menu-item>
         <el-menu-item index="5">Dịch vụ</el-menu-item>
-        <el-menu-item index="6">Giáo dục</el-menu-item>
+        <el-menu-item index="6">
+          <router-link to="/giao-duc">Giáo dục</router-link>
+        </el-menu-item>
         <el-menu-item index="7">Văn hóa</el-menu-item>
-        <el-menu-item index="8">Công nghệ</el-menu-item>
+        <el-menu-item index="8">
+          <router-link to="/cong-nghe">Công nghệ</router-link>
+        </el-menu-item>
         <el-menu-item index="9">Giải trí</el-menu-item>
       </el-menu>
     </el-header>
@@ -56,8 +62,17 @@ export default {
     height: 100% !important;
     padding: 0;
 
-    .el-menu{
+    .el-menu {
+      .el-submenu {
+        .el-menu-item {
+          .a {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+          }
+        }
 
+      }
     }
   }
 
