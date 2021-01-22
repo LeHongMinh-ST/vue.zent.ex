@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
     {
         path: '/',
-        redirect: '/admin'
+        redirect: '/login'
     },
     {
         path: '/admin',
@@ -78,8 +78,7 @@ const routes = [
     },
     {
         path: '/logout',
-        name: 'Forgot',
-        component: () => import('../components/Buoi5/auth/Login')
+        redirect: 'login'
     }
 ]
 
