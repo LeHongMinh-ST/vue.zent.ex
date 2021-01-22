@@ -5,32 +5,20 @@
       </template>
       <template v-slot:main-content>
         <el-main>
-          <el-table
-              :data="tableData"
-              border
-              style="width: 100%">
-            <el-table-column
-                prop="date"
-                label="Date"
-                width="180">
-            </el-table-column>
-            <el-table-column
-                prop="name"
-                label="Name"
-                width="180">
-            </el-table-column>
-            <el-table-column
-                @size-change="handleSizeChange"
-                prop="address"
-                label="Address">
-            </el-table-column>
-          </el-table>
-          <div class="paginate">
-            <el-pagination
-                background
-                layout="total,prev, pager, next,jumper"
-                :total="50">
-            </el-pagination>
+          <div class="block">
+            <span class="demonstration">Child options expand when clicked (default)</span>
+            <el-cascader
+                v-model="value"
+                :options="options"
+                @change="handleChange"></el-cascader>
+          </div>
+          <div class="block">
+            <span class="demonstration">Child options expand when hovered</span>
+            <el-cascader
+                v-model="value"
+                :options="options"
+                :props="{ expandTrigger: 'hover' }"
+                @change="handleChange"></el-cascader>
           </div>
 
         </el-main>

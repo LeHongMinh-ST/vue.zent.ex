@@ -8,7 +8,7 @@
           active-text-color="#ffd04b">
         <el-menu-item index="1">
           <i class="el-icon-menu"></i>
-         <router-link to="/admin"> <span>Tổng quan</span></router-link>
+         <router-link to="/admin"><span>Tổng quan</span></router-link>
         </el-menu-item>
         <el-menu-item index="2">
           <i class="el-icon-s-shop"></i>

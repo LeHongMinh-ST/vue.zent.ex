@@ -4,36 +4,25 @@
       <h2>Cài đặt</h2>
     </template>
     <template v-slot:main-content>
-      <el-main>
-        <el-table
-            :data="tableData"
-            border
-            style="width: 100%">
-          <el-table-column
-              prop="date"
-              label="Date"
-              width="180">
-          </el-table-column>
-          <el-table-column
-              prop="name"
-              label="Name"
-              width="180">
-          </el-table-column>
-          <el-table-column
-              @size-change="handleSizeChange"
-              prop="address"
-              label="Address">
-          </el-table-column>
-        </el-table>
-        <div class="paginate">
-          <el-pagination
-              background
-              layout="total,prev, pager, next,jumper"
-              :total="50">
-          </el-pagination>
+
+      <div class="block">
+        <div class="radio">
+          Order:
+          <el-radio-group v-model="reverse">
+            <el-radio :label="true">descending</el-radio>
+            <el-radio :label="false">ascending</el-radio>
+          </el-radio-group>
         </div>
 
-      </el-main>
+        <el-timeline :reverse="reverse">
+          <el-timeline-item
+              v-for="(activity, index) in activities"
+              :key="index"
+              :timestamp="activity.timestamp">
+            {{activity.content}}
+          </el-timeline-item>
+        </el-timeline>
+      </div>
     </template>
   </AdminLayout>
 </template>
@@ -47,24 +36,18 @@ export default {
   },
   data() {
     return {
-      tableData: [{
-        date: '2016-05-03',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
+      reverse: true,
+      activities: [{
+        content: 'Event start',
+        timestamp: '2018-04-15'
       }, {
-        date: '2016-05-02',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
+        content: 'Approved',
+        timestamp: '2018-04-13'
       }, {
-        date: '2016-05-04',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      }, {
-        date: '2016-05-01',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
+        content: 'Success',
+        timestamp: '2018-04-11'
       }]
-    }
+    };
   },
   methods: {
     handleSizeChange(val) {
