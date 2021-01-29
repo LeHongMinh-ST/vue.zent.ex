@@ -192,15 +192,6 @@ const store = new Vuex.Store({
             state.product.quantity = "";
             state.product.status = false;
         },
-
-        resetBtn(state){
-            state.btnCreate = "Tạo mới";
-            state.product.id = "";
-            state.product.name = "";
-            state.product.price = "";
-            state.product.quantity = "";
-            state.product.status = false;
-        },
         changePage(state,value) {
             let limit = state.pagination.limit;
             let page = state.pagination.page;
@@ -263,7 +254,12 @@ const store = new Vuex.Store({
             state.errorQty = "";
             state.errorName = "";
             state.errorPrice = "";
-            this.resetBtn();
+            state.btnCreate = "Tạo mới";
+            state.product.id = "";
+            state.product.name = "";
+            state.product.price = "";
+            state.product.quantity = "";
+            state.product.status = false;
         }
     }
 })
