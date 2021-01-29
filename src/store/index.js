@@ -66,6 +66,12 @@ const store = new Vuex.Store({
             page: 1,
         },
         products: [],
+        name:"",
+        price:"",
+        quantity:"",
+        errorName: "",
+        errorPrice: "",
+        errorQty: "",
     },
     getters: {
 
@@ -219,6 +225,49 @@ const store = new Vuex.Store({
                 return product.id != data;
             })
         },
+        changeName(state,e) {
+            state.product.name =  e;
+            if (!state.product.name.length == 0) {
+                state.errorName = "";
+            }else {
+                state.errorName = "Tên sản phẩm không được để trống";
+            }
+        },
+        changePrice(state,e) {
+            state.product.price = e;
+            if (!state.product.price.length == 0) {
+                state.errorPrice = "";
+            }else {
+                state.errorPrice = "Tên sản phẩm không được để trống";
+            }
+        },
+        changeQuantity(state,e) {
+            state.product.quantity = e;
+            if (!state.product.quantity.length == 0) {
+                state.errorQty = "";
+            }else {
+                state.errorQty = "Tên sản phẩm không được để trống";
+            }
+        },
+        setErrorName(state,value){
+            state.errorName = value
+        },
+        setErrorPrice(state,value){
+            state.errorPrice = value
+        },
+        setErrorQty(state,value){
+            state.errorQty = value
+        },
+        btnClear(state) {
+            state.name = "";
+            state.price = "";
+            state.quantity = "";
+
+            state.errorQty = "";
+            state.errorName = "";
+            state.errorPrice = "";
+            this.resetBtn();
+        }
     }
 })
 

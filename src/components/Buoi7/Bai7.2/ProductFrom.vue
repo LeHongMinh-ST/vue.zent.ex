@@ -7,26 +7,26 @@
       <div class="bodyForm">
         <div class="inputWrap">
           <label>Tên sản phẩm <span class="required">(*)</span></label>
-          <input type="text" :class="{errorInput: errorName.length > 0 && this.name.length == 0}"
+          <input type="text" :class="{errorInput: errorName.length > 0 && product.name.length == 0}"
                  placeholder="Nhập tên sản phẩm" ref="name" @input="changeName($event.target.value)"
                  :value="product.name">
-          <p class="error" v-if="errorName.length > 0 && this.name.length == 0">{{ errorName }}</p>
+          <p class="error" v-if="errorName.length > 0 && product.name.length == 0">{{ errorName }}</p>
         </div>
 
         <div class="inputWrap">
           <label>Đơn giá <span class="required">(*)</span></label>
-          <input type="text" :class="{errorInput: errorPrice.length > 0 && this.price.length == 0}"
+          <input type="text" :class="{errorInput: errorPrice.length > 0 && product.price.length == 0}"
                  placeholder="Nhập đơn giá sản phẩm" ref="price" @input="changePrice($event.target.value)"
                  :value="product.price">
-          <p class="error" v-if="errorPrice.length > 0 && this.price.length == 0">{{ errorPrice }}</p>
+          <p class="error" v-if="errorPrice.length > 0 && product.price.length == 0">{{ errorPrice }}</p>
         </div>
 
         <div class="inputWrap">
           <label>Số lượng <span class="required">(*)</span></label>
-          <input type="text" :class="{errorInput: errorQty.length > 0 && this.quantity.length == 0}"
+          <input type="text" :class="{errorInput: errorQty.length > 0 && product.quantity.length == 0}"
                  placeholder="Nhập số lượng sản phẩm" ref="quantity" @input="changeQuantity($event.target.value)"
                  :value="product.quantity">
-          <p class="error" v-if="errorQty.length > 0 && this.quantity.length == 0">{{ errorQty }}</p>
+          <p class="error" v-if="errorQty.length > 0 && product.quantity.length == 0">{{ errorQty }}</p>
         </div>
       </div>
 
@@ -46,62 +46,32 @@ export default {
   name: "ProductFrom",
   data() {
     return {
-      name:"",
-      price:"",
-      quantity:"",
-      errorName: "",
-      errorPrice: "",
-      errorQty: "",
+
     }
   },
   methods: {
 
     ...mapMutations([
-      'submitEvent', 'resetBtn'
+      'submitEvent', 'resetBtn','changeQuantity','changePrice','changeName','setErrorName','setErrorPrice','setErrorQty'
     ])
     ,
-    changeName(e) {
-      this.name =  e;
-      if (!this.name.length == 0) {
-        this.errorName = "";
-      }else {
-        this.errorName = "Tên sản phẩm không được để trống";
-      }
-    },
-    changePrice(e) {
-      this.price = e;
-      if (!this.price.length == 0) {
-        this.errorPrice = "";
-      }else {
-        this.errorPrice = "Tên sản phẩm không được để trống";
-      }
-    },
-    changeQuantity(e) {
-      this.quantity = e;
-      if (!this.quantity.length == 0) {
-        this.errorQty = "";
-      }else {
-        this.errorQty = "Tên sản phẩm không được để trống";
-      }
 
-    },
 
     btnSubmit() {
       let validate = true;
 
       if (this.$refs.name.value == 0) {
-        this.errorName = "Tên sản phẩm không được để trống";
+        this.setErrorName("Tên sản phẩm không được để trống");
         validate = false;
       }
-      console.log(this.price)
 
       if (this.$refs.price.value == 0) {
-        this.errorPrice = "Giá sản phẩm không được để trống";
+        this.setErrorPrice("Giá sản phẩm không được để trống");
         validate = false
       }
 
       if (this.$refs.quantity.value == 0) {
-        this.errorQty = "Số lượng sản phẩm không được để trống";
+        this.setErrorQty("Số lượng sản phẩm không được để trống");
         validate = false
       }
 
@@ -129,7 +99,7 @@ export default {
   },
   computed: {
     ...mapState([
-      'products', 'btnCreate', 'product'
+      'products', 'btnCreate', 'product','errorName','errorPrice','errorQty'
     ]),
     ...mapGetters([])
   },
