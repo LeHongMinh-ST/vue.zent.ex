@@ -259,9 +259,6 @@ const store = new Vuex.Store({
             state.errorQty = value
         },
         btnClear(state) {
-            state.name = "";
-            state.price = "";
-            state.quantity = "";
 
             state.errorQty = "";
             state.errorName = "";

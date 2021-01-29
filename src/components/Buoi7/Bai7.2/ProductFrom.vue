@@ -45,18 +45,22 @@ import {mapGetters, mapMutations, mapState} from 'vuex';
 export default {
   name: "ProductFrom",
   data() {
-    return {
-
-    }
+    return {}
   },
   methods: {
 
     ...mapMutations([
-      'submitEvent', 'resetBtn','changeQuantity','changePrice','changeName','setErrorName','setErrorPrice','setErrorQty'
+      'submitEvent',
+      'resetBtn',
+      'changeQuantity',
+      'changePrice',
+      'changeName',
+      'setErrorName',
+      'setErrorPrice',
+      'setErrorQty',
+      'btnClear'
     ])
     ,
-
-
     btnSubmit() {
       let validate = true;
 
@@ -86,26 +90,15 @@ export default {
         this.btnClear();
       }
     },
-    btnClear() {
-      this.name = "";
-      this.price = "";
-      this.quantity = "";
 
-      this.errorQty = "";
-      this.errorName = "";
-      this.errorPrice = "";
-      this.resetBtn();
-    }
   },
   computed: {
     ...mapState([
-      'products', 'btnCreate', 'product','errorName','errorPrice','errorQty'
+      'products', 'btnCreate', 'product', 'errorName', 'errorPrice', 'errorQty'
     ]),
     ...mapGetters([])
   },
-  watch:{
-
-  }
+  watch: {}
 }
 </script>
 
