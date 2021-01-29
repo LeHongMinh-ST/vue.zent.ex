@@ -79,6 +79,15 @@ const routes = [
     {
         path: '/logout',
         redirect: 'login'
+    },{
+        path: '/products',
+        name: 'Product',
+        component: () => import('../components/Buoi7/Bai7.1/Product')
+    },
+    {
+        path: '/exercise',
+        name: 'Exercise',
+        component: () => import('../components/Buoi7/Bai7.2/Exercise')
     }
 ]
 
