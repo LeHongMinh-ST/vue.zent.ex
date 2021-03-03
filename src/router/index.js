@@ -79,7 +79,7 @@ const routes = [
     {
         path: '/logout',
         redirect: 'login'
-    },{
+    }, {
         path: '/products',
         name: 'Product',
         component: () => import('../components/Buoi7/Bai7.1/Product')
@@ -88,6 +88,26 @@ const routes = [
         path: '/exercise',
         name: 'Exercise',
         component: () => import('../components/Buoi7/Bai7.2/Exercise')
+    },
+    {
+        path: '/todo',
+        name: 'Todo',
+        component: () => import('../components/Buoi3/Bai3.1/Todo')
+    },
+    {
+        path: '/product/bai1',
+        name: 'Todo',
+        component: () => import('../components/Buoi9/Bai9.1/Product')
+    },
+    {
+        path: '/product/bai2',
+        name: 'Todo',
+        component: () => import('../components/Buoi9/Bai9.2/Product')
+    },
+    {
+        path: '/test',
+        name: 'test',
+        component: () => import('../components/HelloWorld')
     }
 ]
 

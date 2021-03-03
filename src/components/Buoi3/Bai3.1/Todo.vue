@@ -13,7 +13,8 @@
 
       <div class="bodyTodosWrap">
         <div class="listTodo">
-          <TodoItem v-for="(todo,index) in todos" :key="index" :name="todo.name" :index="index" :status="todo.status"
+          <TodoItem v-for="(todo,index) in todos" :key="index" :name="todo.title" :index="index"
+                    :status="todo.is_complete"
                     @deleteTodo="deleteEvent" @statusEvent="statusEvent"/>
           <div v-if="todos.length == 0" class="todoNone">
             Chưa có task nào được thêm
@@ -26,8 +27,11 @@
 
 <script>
 import TodoItem from "@/components/Buoi3/Bai3.1/TodoItem";
+import axios from 'axios'
+import _ from 'lodash'
 
 export default {
+
   name: "Todo",
   components: {
     TodoItem
@@ -39,22 +43,101 @@ export default {
     }
   },
   methods: {
-    onInput() {
-      let todo = {
-        name: this.value,
-        status: false
-      }
-      this.todos.push(todo);
-      this.value = "";
+    getNotCompleteTodos () {
+      return _.filter(this.todos, {isComplete: false})
     },
-    deleteEvent(data) {
-      this.todos = this.todos.filter((todo, index) => {
-        return index != data;
+    onInput() {
+      axios({
+        method: 'post',
+        url: 'http://vuecourse.zent.edu.vn/api/todos',
+        data: {
+          title: this.value,
+        }
+      }).then((response) => {
+        if (response.status === 200) {
+          this.$message({
+            message: 'Tạo mới thành công',
+            type: 'success'
+          });
+          this.getToDoList();
+          this.value = "";
+
+        }
       })
     },
-    statusEvent(data){
-      this.todos[data].status = !this.todos[data].status
+    deleteEvent(data) {
+      console.log(data)
+
+      this.todo = this.todos.find((todo, index) => {
+        return index == data;
+      })
+
+      axios({
+        method: 'delete',
+        url: 'http://vuecourse.zent.edu.vn/api/todos/' + this.todo.id,
+      }).then((response) => {
+        if (response.status === 200) {
+          this.getToDoList();
+          this.$message({
+            message: 'Xóa thành công',
+            type: 'success'
+          });
+        }
+      }).catch((error) => {
+        // handle error
+        console.log(error);
+      });
+    },
+    statusEvent(data) {
+      this.todo = this.todos.find((todo, index) => {
+        return index == data;
+      })
+
+      let is_complete  = this.todo.is_complete === 1 ? 0 : 1;
+
+      axios({
+        method: 'put',
+        url: 'http://vuecourse.zent.edu.vn/api/todos/' + this.todo.id,
+        data:{
+          is_complete: is_complete
+        }
+      }).then((response) => {
+        if (response.status === 200) {
+          this.getToDoList();
+
+
+          this.$message({
+            message: 'Cập nhật thành công',
+            type: 'success'
+          });
+        }
+      }).catch((error) => {
+        // handle error
+        console.log(error);
+      });
+    },
+    getToDoList(){
+      axios({
+        method: 'get',
+        url: 'http://vuecourse.zent.edu.vn/api/todos',
+      }).then((response) => {
+        this.todos = response.data.data.data;
+      }).catch((error) => {
+        // handle error
+        console.log(error);
+      });
     }
+  },
+  mounted() {
+    axios({
+      method: 'get',
+      url: 'http://vuecourse.zent.edu.vn/api/todos',
+    }).then((response) => {
+      this.todos = response.data.data.data;
+    }).catch((error) => {
+      // handle error
+      console.log(error);
+    });
   }
 }
 </script>
@@ -73,6 +156,7 @@ export default {
     height: 650px;
     background-color: #ffffff;
     border-radius: 10px;
+    padding: 0px 10px;
 
     .headerTodosWrap {
       margin: 30px 0;
@@ -88,7 +172,8 @@ export default {
         width: 100%;
 
         input {
-          width: 85%;
+          width: 100%;
+          box-sizing: border-box;
           font-size: 16px;
           padding: 12px;
           border: 1px solid #ddd;
